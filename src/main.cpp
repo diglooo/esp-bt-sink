@@ -5,9 +5,11 @@
 I2SStream i2s;
 BluetoothA2DPSink a2dp_sink(i2s);
 
-#define PIN_BCK 26
-#define PIN_DATA 27
-#define PIN_WS 25
+//On PCM5102A board, you must bridge SCK on PCB
+
+#define PIN_BCK 26  //PCM5102A BCK
+#define PIN_DATA 27 //PCM5102A DIN
+#define PIN_WS 25   //PCM5102A LCK
 #define PIN_RELAY 14
 
 int relay_status = 0;
