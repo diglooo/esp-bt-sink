@@ -310,7 +310,7 @@ class BluetoothA2DPSink : public BluetoothA2DPCommon {
   /// Provides the actually set data rate (in samples per second)
   virtual uint16_t sample_rate() { return m_sample_rate; }
 
-  /// We need to confirm a new seesion by calling confirm_pin_code()
+  /// We need to confirm a new session by calling confirm_pin_code()
   virtual void activate_pin_code(bool active);
 
   /// confirms the connection request by returning the receivedn pin code

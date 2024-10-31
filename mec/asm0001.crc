@@ -1,0 +1,65 @@
+﻿  MODEL ASM0001 :
+ 
+
+  3 CIRCULAR REFERENCE LOOPS FOUND
+ 
+
+   LOOP #  1
+
+   Depth of loop is 5
+
+Feature number 8 (COMPONENT, id = 39) 
+  in model ASM0001 refers to:
+
+Feature number 16 (EXTRUDE_8, id = 468) 
+  in model BOX_BASE must follow after:
+
+Feature number 15 (EXTRUDE_7, id = 423) 
+  in model BOX_BASE refers to:
+
+Feature number 10 (COMPONENT, id = 52) 
+  in model ASM0001 must follow after:
+
+Feature number 8 (COMPONENT, id = 39) 
+  in model ASM0001 - circle closed.
+
+
+   LOOP #  2
+
+   Depth of loop is 5
+
+Feature number 6 (COMPONENT, id = 73) 
+  in model ASM0001 refers to:
+
+Feature number 19 (DATUM PLANE, id = 657) 
+  in model BOX_BASE must follow after:
+
+Feature number 15 (EXTRUDE_7, id = 423) 
+  in model BOX_BASE refers to:
+
+Feature number 10 (COMPONENT, id = 52) 
+  in model ASM0001 must follow after:
+
+Feature number 6 (COMPONENT, id = 73) 
+  in model ASM0001 - circle closed.
+
+
+   LOOP #  3
+
+   Depth of loop is 5
+
+Feature number 6 (COMPONENT, id = 73) 
+  in model ASM0001 refers to:
+
+Feature number 26 (EXTRUDE_11__4, id = 793) 
+  in model BOX_BASE must follow after:
+
+Feature number 15 (EXTRUDE_7, id = 423) 
+  in model BOX_BASE refers to:
+
+Feature number 10 (COMPONENT, id = 52) 
+  in model ASM0001 must follow after:
+
+Feature number 6 (COMPONENT, id = 73) 
+  in model ASM0001 - circle closed.
+
