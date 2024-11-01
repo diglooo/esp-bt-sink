@@ -20,12 +20,19 @@ BluetoothA2DPSink a2dp_sink(i2s);
 #define APP_STA_PAIRING_FAILED 4
 #define APP_STA_CONNECTED 5
 
+/*
+disconnesso
+voglio connettermi. premo pulsante
+
+
+*/
+
 int relay_status = 0;
 int connected = 0, connected_old = 0;
 int cnt = 0;
-int userButtonMem = 0;
 int pairing_millis = 0;
-
+int user_button_millis = 30000;
+int user_ack = 0;
 int APP_STATE = APP_STA_INIT;
 
 void avrc_metadata_callback(uint8_t id, const uint8_t *text)
@@ -42,7 +49,12 @@ void loop()
 
     connected_old = connected;
     connected = a2dp_sink.is_connected();
-    int touchlevel = touchRead(PIN_TOUCH_BUTTON);
+
+    if (digitalRead(PIN_TOUCH_BUTTON))
+    {
+        user_button_millis = millis();
+    }
+    user_ack = (millis() - user_button_millis < 15000);
 
     switch (APP_STATE)
     {
@@ -51,6 +63,7 @@ void loop()
         Serial.begin(115200);
         Serial.println("APP_STA_INIT");
         pinMode(PIN_RELAY, OUTPUT);
+        pinMode(PIN_TOUCH_BUTTON, INPUT_PULLUP);
         audio_tools::I2SConfig cfg = i2s.defaultConfig();
         cfg.pin_bck = PIN_BCK;
         cfg.pin_data = PIN_DATA;
@@ -72,20 +85,20 @@ void loop()
         {
             APP_STATE = APP_STA_PAIRING;
         }
+        if (connected)
+        {
+            APP_STATE = APP_STA_CONNECTED;
+            pairing_millis = 0;
+        }
         break;
     }
 
     case APP_STA_PAIRING:
     {
         Serial.println("APP_STA_PAIRING");
-        if (touchlevel < BUTTON_PRESSED_THRESH)
-        {
-            userButtonMem = 1;
-        }
-        if (userButtonMem)
+        if (user_ack)
         {
             a2dp_sink.confirm_pin_code();
-            Serial.println("Pairing confirmed.");
             APP_STATE = APP_STA_CHECK_PAIRING;
         }
         if (a2dp_sink.pin_code() == 0)
