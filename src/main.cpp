@@ -1,9 +1,5 @@
 #include "AudioTools.h"
 #include "BluetoothA2DPSinkQueued.h"
-#include "soc/rtc_wdt.h"
-
-I2SStream i2s;
-BluetoothA2DPSink a2dp_sink(i2s);
 
 // On PCM5102A board, you must bridge SCK on PCB
 #define PIN_BCK 26  // PCM5102A BCK
@@ -20,13 +16,6 @@ BluetoothA2DPSink a2dp_sink(i2s);
 #define APP_STA_PAIRING_FAILED 4
 #define APP_STA_CONNECTED 5
 
-/*
-disconnesso
-voglio connettermi. premo pulsante
-
-
-*/
-
 int relay_status = 0;
 int connected = 0, connected_old = 0;
 int cnt = 0;
@@ -34,6 +23,9 @@ int pairing_millis = 0;
 int user_button_millis = 30000;
 int user_ack = 0;
 int APP_STATE = APP_STA_INIT;
+
+I2SStream i2s;
+BluetoothA2DPSink a2dp_sink(i2s);
 
 void avrc_metadata_callback(uint8_t id, const uint8_t *text)
 {
@@ -143,5 +135,5 @@ void loop()
     }
     }
 
-    delay(200);
+    delay(100);
 }
