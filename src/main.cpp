@@ -2,7 +2,7 @@
 #include "BluetoothA2DPSinkQueued.h"
 #include <Bonezegei_WS2812.h>
 
-//param WS2812 pin
+// param WS2812 pin
 Bonezegei_WS2812 rgb_led(15);
 
 // On PCM5102A board, you must bridge SCK on PCB
@@ -141,16 +141,17 @@ void loop()
     case APP_STA_CONNECTED:
     {
         Serial.println("APP_STA_CONNECTED");
+        digitalWrite(PIN_RELAY, 1);
 
-        if (millis() - last_play_millis < NO_SOUND_TIMEOUT)
-        {
-            digitalWrite(PIN_RELAY, 1);
-        }
-        else
-        {
-            digitalWrite(PIN_RELAY, 0);
-        }
-
+        /*    if (millis() - last_play_millis < NO_SOUND_TIMEOUT)
+            {
+                digitalWrite(PIN_RELAY, 1);
+            }
+            else
+            {
+                digitalWrite(PIN_RELAY, 0);
+            }
+    */
         if (!connected)
         {
             APP_STATE = APP_STA_DISCONNECTED;

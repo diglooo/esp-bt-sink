@@ -1,0 +1,22 @@
+﻿  MODEL BUTTON :
+ 
+
+  1 CIRCULAR REFERENCE LOOPS FOUND
+ 
+
+   LOOP #  1
+
+   Depth of loop is 4
+
+Feature number 8 (COMPONENT, id = 42) 
+  in model BUTTON refers to:
+
+Feature number 6 (EXTRUDE_2, id = 58) 
+  in model LED_BUTTON_SWITCH must follow after:
+
+Feature number 5 (EXTRUDE_1, id = 31) 
+  in model LED_BUTTON_SWITCH refers to:
+
+Feature number 8 (COMPONENT, id = 42) 
+  in model BUTTON - circle closed.
+
