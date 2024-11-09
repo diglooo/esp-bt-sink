@@ -1,6 +1,6 @@
 # ESP32 A2DP audio receiver
 This is a project for an ESP32 based A2DP bluetooth receiver. It uses the I2S interface to stream digital audio to an external DAC.
-![enter image description here](uuu)
+![Receiver box](https://github.com/diglooo/esp-bt-sink/blob/main/pictures/main.PNG)
 Features:
  - Simple PlatformIO project
  - Based on the A2DP library from [ESP32-A2DP](https://github.com/pschatzmann/ESP32-A2DP)
